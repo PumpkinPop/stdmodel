@@ -1,0 +1,333 @@
+function figureM1=plot_BOLD(which_data, all_prediction, legend_name)
+
+figureM1=figure('units', 'normalized', 'outerposition', [0 0 1 1], 'color',[1 1 1]);
+
+col_vector = {'k' , 'r' , 'b' , 'g' , 'c','y'};
+
+addpath(genpath(fullfile(pwd,'data')));
+
+switch which_data
+    
+    case {'Ca69_v1' , 'Ca69_v2' , 'Ca69_v3'}
+        load v_mean_69
+        switch which_data
+            case 'Ca69_v1'
+                v_mean = v_mean_69(;
+            case 'Ca69_v2'
+                v_mean = v_mean_69;
+            case 'Ca69_v3'
+                v_mean = v_mean_69;
+        end
+        
+        
+        % Use bar plot to produce data
+              
+        b1 = bar(1:50 , v2_mean);
+        set(b1,'Facecolor', [.7, .7, .7])
+        
+        hold on
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            scatter(1:50,m2Vec,'filled','MarkerFaceColor', col)
+            
+        end
+        legend('data', legend_name)
+        
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            plot(1:5, m2Vec(1:5), col);
+            hold on
+            plot(6:10,m2Vec(6:10),col);
+            hold on
+            plot(11:15, m2Vec(11:15), col);
+            hold on
+            plot(16:21, m2Vec(16:21), col);
+            hold on
+            plot(22:24, m2Vec(22:24), col);
+            hold on
+            plot(25:27, m2Vec(25:27), col);
+            hold on
+            plot(28:30, m2Vec(28:30), col);
+            hold on
+            plot(31:34, m2Vec(31:34), col);
+            hold on
+            plot(35:38, m2Vec(35:38), col);
+            hold on
+            plot(39:42, m2Vec(39:42), col);
+            hold on
+            plot(43:46, m2Vec(43:46), col);
+            hold on
+            plot(47:50, m2Vec(47:50), col);
+            hold on
+            
+        end
+        
+        
+        
+        set(gca,'xtick',[1, 6,11,16,22,25,28,31,35,39,43,47]);
+        set(gca,'XTickLabel',{'Patterns-Sparsity','Grating-Sparsity','NoiseBars-Sparsity','Waves-Sparisity','Grating-Orientation','Noisebar-Orientation','Waves-Orientation','Grating-cross','Grating-Contrast','Noisebar-Contrast','Wave-Contrast','Pattern-Contrast'});
+        
+        h=gca;
+        th=rotateticklabel(h,90);
+        set (gca,'position',[0.1,0.2,.8,.75] );
+        box off
+        hold on
+        g=max(v2_mean)*1;
+        
+        line([5.4,5.4],[0,g])
+        hold on
+        line([10.4,10.4],[0,g])
+        hold on
+        line([15.4,15.4],[0,g])
+        hold on
+        line([21.4,21.4],[0,g])
+        hold on
+        line([24.4,24.4],[0,g])
+        hold on
+        line([27.4,27.4],[0,g])
+        hold on
+        line([30.4,30.4],[0,g])
+        hold on
+        line([30.4,30.4],[0,g])
+        hold on
+        line([34.4,34.4],[0,g])
+        hold on
+        line([38.4,38.4],[0,g])
+        hold on
+        line([42.4,42.4],[0,g])
+        hold on
+        line([46.4,46.4],[0,g])
+        hold on
+        line([50.4,50.4],[0,g])
+        
+        % Add a title
+        ylabel('Predicted BOLD response')
+        
+        
+    case 'Ca05'
+        load v2_mean_05
+        v2_mean = v2_mean_05;
+        
+        % Use bar plot to produce data
+        
+        b1 = bar(1:48 , v2_mean);
+        set(b1,'Facecolor', [.7, .7, .7])
+        
+        hold on
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            scatter(1:48,m2Vec(1:48),'filled','MarkerFaceColor', col)
+        end
+        legend('data', legend_name)
+        
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            hold on
+            plot(1:5, m2Vec(1:5), col);
+            hold on
+            plot(6:10, m2Vec(6:10), col);
+            hold on
+            plot(11:15, m2Vec(11:15), col);
+            hold on
+            plot(16:19, m2Vec(16:19), col);
+            hold on
+            plot(20:22, m2Vec(20:22), col);
+            hold on
+            plot(23:25, m2Vec(23:25), col);
+            hold on
+            plot(26:28, m2Vec(26:28), col);
+            hold on
+            plot(29:32, m2Vec(29:32), col);
+            hold on
+            plot(33:36, m2Vec(33:36), col);
+            hold on
+            plot(37:40, m2Vec(37:40), col);
+            hold on
+            plot(41:44, m2Vec(41:44), col);
+            hold on
+            plot(45:48, m2Vec(45:48), col);
+        end
+        
+        set(gca,'xtick',[1, 6,11,16,22,25,28,31,35,39,43,47]);
+        set(gca,'XTickLabel',{'Patterns-Sparsity','Grating-Sparsity','NoiseBars-Sparsity','Waves-Sparisity','Grating-Orientation','Noisebar-Orientation','Waves-Orientation','Grating-cross','Grating-Contrast','Noisebar-Contrast','Wave-Contrast','Pattern-Contrast'});
+        
+        h=gca;
+        th=rotateticklabel(h,90);
+        set (gca,'position',[0.1,0.2,.8,.75] );
+        box off
+        hold on
+        g=max(v2_mean)*1.5;
+        
+        line([5.4,5.4],[0,g])
+        hold on
+        line([10.4,10.4],[0,g])
+        hold on
+        line([15.4,15.4],[0,g])
+        hold on
+        line([19.4,19.4],[0,g])
+        hold on
+        line([22.4,22.4],[0,g])
+        hold on
+        line([25.4,25.4],[0,g])
+        hold on
+        line([28.4,28.4],[0,g])
+        hold on
+        line([32.4,32.4],[0,g])
+        hold on
+        line([36.4,36.4],[0,g])
+        hold on
+        line([40.4,40.4],[0,g])
+        hold on
+        line([44.4,44.4],[0,g])
+        hold on
+        line([48.4,48.4],[0,g])
+        
+
+        
+    case 'K1'
+        load v2_mean_K
+        v2_mean = v2_mean_K;
+        
+        % Use bar plot to produce data
+        
+        b1 = bar(1:39 , v2_mean);
+        set(b1,'Facecolor', [.7, .7, .7])
+        
+        hold on
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            scatter(1:39,m2Vec(1:39),'filled','MarkerFaceColor', col)
+        end
+        legend('data' , legend_name)
+        
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            hold on
+            plot(1:8, m2Vec(1:8), col );
+            hold on
+            plot(9:12,m2Vec(9:12), col );
+            hold on
+            plot(13:16, m2Vec(13:16), col );
+            hold on
+            plot(17:20, m2Vec(17:20), col );
+            hold on
+            plot(21:30, m2Vec(21:30), col );
+            hold on
+            plot(31:35, m2Vec(31:35), col );
+            hold on
+            plot(36:39, m2Vec(36:39), col );
+            
+        end
+        
+        set(gca,'xtick',[1, 9,13,17,21,31,36]);
+        set(gca,'XTickLabel',{'Grating-Orientation','Grating-Contrast','Chess-Contrast','Dust-Contrast','Pattern-Contrast','Grating-Sparsity(-)','Pattern-Sparsity(-)'});
+        
+        h=gca;
+        th=rotateticklabel(h,90);
+        set (gca,'position',[0.1,0.2,.8,.75] );
+        box off
+        hold on
+        g=max(v2_mean)*1.5;
+        
+        line([8.4,8.4],[0,g])
+        hold on
+        line([12.4,12.4],[0,g])
+        hold on
+        line([16.4,16.4],[0,g])
+        hold on
+        line([20.4,20.4],[0,g])
+        hold on
+        line([30.4,30.4],[0,g])
+        hold on
+        line([35.4,35.4],[0,g])
+        hold on
+        
+              % Add a title
+   
+        
+    case 'K2'
+        load v2_mean_K2
+        v2_mean = v2_mean_K2;
+        
+        % Use bar plot to produce data
+        
+        b1 = bar(1:39 , v2_mean);
+        set(b1,'Facecolor', [.7, .7, .7])
+        
+        hold on
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            scatter(1:39,m2Vec(1:39),'filled','MarkerFaceColor', col)
+        end
+        legend('data',legend_name)
+        
+        for which_prediction = 1:size( all_prediction ,2)
+            m2Vec = all_prediction(  : , which_prediction );
+            m2Vec = m2Vec';
+            col = col_vector{which_prediction};
+            hold on
+            plot(1:8, m2Vec(1:8), col );
+            hold on
+            plot(9:12,m2Vec(9:12), col );
+            hold on
+            plot(13:16, m2Vec(13:16), col );
+            hold on
+            plot(17:20, m2Vec(17:20), col );
+            hold on
+            plot(21:30, m2Vec(21:30), col );
+            hold on
+            plot(31:35, m2Vec(31:35), col );
+            hold on
+            plot(36:39, m2Vec(36:39), col );
+            
+        end
+        
+        set(gca,'xtick',[1, 9,13,17,21,31,36]);
+        set(gca,'XTickLabel',{'Grating-Orientation','Grating-Contrast','Chess-Contrast','Dust-Contrast','Pattern-Contrast','Grating-Sparsity(-)','Pattern-Sparsity(-)'});
+        
+        h=gca;
+        th=rotateticklabel(h,90);
+        set (gca,'position',[0.1,0.2,.8,.75] );
+        box off
+        hold on
+        g=max(v2_mean)*1.5;
+        
+        line([8.4,8.4],[0,g])
+        hold on
+        line([12.4,12.4],[0,g])
+        hold on
+        line([16.4,16.4],[0,g])
+        hold on
+        line([20.4,20.4],[0,g])
+        hold on
+        line([30.4,30.4],[0,g])
+        hold on
+        line([35.4,35.4],[0,g])
+        hold on
+     
+        
+    otherwise
+        disp('Choose the right dataset')
+end
+
+end
+
+
+
+
+
+
